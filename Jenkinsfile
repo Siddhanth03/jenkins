@@ -10,6 +10,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Pipeline is working!"
+                echo "bhargv"
             }
         }
     }
