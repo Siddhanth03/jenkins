@@ -1,16 +1,27 @@
 pipeline {
     agent any
+
+    environment {
+        AWS_ACCESS_KEY_ID = credentials('aws-access-key-id')  
+        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key') 
+        AWS_DEFAULT_REGION = 'us-west-2'  
+
     stages {
-        stage('GitHub Checkout') {
+        stage('Terraform Init') {
             steps {
-                echo "Checking out code from GitHub..."
-                git url: 'https://github.com/Siddhanth03/jenkins.git', branch: 'main' , credentialsId: 'ba247434-cc58-4522-ad60-9d7caf952fa7'
+                sh 'terraform init'
             }
         }
-        stage('Test') {
+
+        stage('Terraform Plan') {
             steps {
-                echo "Pipeline is working!"
-                echo "bhargv"
+                sh 'terraform plan'
+            }
+        }
+
+        stage('Terraform Apply') {
+            steps {
+                sh 'terraform apply -auto-approve'
             }
         }
     }
