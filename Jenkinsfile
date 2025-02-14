@@ -8,7 +8,7 @@ pipeline {
     }
 
     stages {
-        stage('Terraform Init') {
+       /* stage('Terraform Init') {
             steps {
                 sh 'terraform init'
             }
@@ -23,6 +23,12 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 sh 'terraform apply -auto-approve'
+            }
+        } */
+
+        stage('Terraform destory ') {
+            steps {
+                sh 'terraform destroy -auto-approve'
             }
         }
     }
