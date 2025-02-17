@@ -7,7 +7,7 @@ pipeline {
         AWS_DEFAULT_REGION = 'us-west-2'  
     }
 
-    /*stages {
+    stages {
         stage('Terraform Init') {
             steps {
                 sh 'terraform init'
@@ -24,11 +24,6 @@ pipeline {
             steps {
                 sh 'terraform apply -auto-approve'
             }
-        }*/
-
-        stage('terrform destroy') {
-            steps{
-                sh 'terraform destroy -auto-approve'
-            }
         }
     }
+}
